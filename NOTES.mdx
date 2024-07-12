@@ -1,0 +1,52 @@
+# Node masterlcass
+
+[My Github repo finished](https://github.com/harikrishkk/devcamper_api)
+
+- install Node js LTS 
+- VS code 
+- git bash for windows 
+- dotenv, express snippet, prettiter as VS code extensions. 
+
+## HTTP 
+
+- communicate between server & clients.
+- Install nodemon.
+- we manually create a server
+- 
+```js
+
+const http = require('http')
+const server  = http.createServer((req, res) => {
+
+  res.setHeader('Content-Type', 'text/plain'); 
+  res.write('Hello')
+  res.end();
+
+  res.setHeader('Content-Type', 'text/html'); 
+  res.write('<h1> Hello  </h1>');
+  res.end();
+
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({
+   success: true,
+   data:  []
+  }));
+  
+});
+
+const PORT = 5000;
+server.listen(PORT, () => console.log("Server running..."));
+
+```
+- nodemon helps avoid restarting server after changes.
+- HTTP Codes
+- 1x - info, 2x - success, 3x - redirection, 4x- client error, 5x - server error.
+- To send data to server, POSTMAN => Headers
+- `Authorization: dasdasdasdasda5345fsdf` and if we do request.headers.authorization , we get the same on server side.
+- GET, POST, PUT/PATCH, DELETE
+- There are standards to set paths for the routes.
+
+## Setup a basic express server
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/b9a09530b2e2a3b88a65d1ec9ad82bfc59ca2e36)
+- We add a .env file to add PORT or other secret variables that should not be exposed to github.
