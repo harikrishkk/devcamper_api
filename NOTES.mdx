@@ -50,3 +50,165 @@ server.listen(PORT, () => console.log("Server running..."));
 
 [Code reference](https://github.com/harikrishkk/devcamper_api/commit/b9a09530b2e2a3b88a65d1ec9ad82bfc59ca2e36)
 - We add a .env file to add PORT or other secret variables that should not be exposed to github.
+- we also have a script for production & dev 
+- test the route in POSTMAN and verify the paths 
+- add a .gitignore too. 
+
+## Routes and controllers 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/355e432f1e68268c8f7e0b2fc4b848c0fb7d071d)
+[More code](https://github.com/harikrishkk/devcamper_api/commit/187cb054e378b67ac378d01b56cd9e52acd1aea5)
+
+- we define `routes` and `controllers`.
+- server.js delegates to routes and route delegates the logic of handling the route to controllers.
+- Thus, we maintain clear seperation of logics and makes files lean and clean.
+- Logics go towards controller methods.
+- In POSTMAN, raise a request to the path and see the response. 
+
+## Middleware 
+
+- is a function that has access to req/res cycle. 
+- mostly used for things like logging ( node packages like morgan is used for this )
+- we need to register middlewares with express with `app.use()` and pass the middlewares.
+- Every request passes through the middleware. 
+
+## Connect with DB 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/95478a7f490080c14fc8fb8787dba896b9b1d049)
+- MongoDB - Atlas -> A cloud DB ( hari login ), Compass can connect to remote DB ( Download & install ) Copy connection string and paste them on  to compass. 
+- Free tier.
+- Database - read & write 
+- Whitlist IP & Network access. 
+- Install  mongoose for object modelling to interact with DB . Its an abstraction layer to write queries, custom middlewares, models, validations etc.
+- We do not do it on a database layer & do it in the application layer. 
+`MONGO_URI=mongodb+srv://username:password:randomdigits.mongodb.net/devcamper`
+
+## Add color support for logging 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/41f7af234045a097a5254bccc6f4683d8dde7100)
+
+## Add modal for bootcamp 
+
+- we create a schema and pass the fields with the validations.
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/926624b6164bea25afd6c9a3ba313e31afc47ed7)
+
+## Add CRUD operations for Bootcamp 
+
+- if we need to send JSON data, the header content type application/json should be added, and we need to register the middleware with express.json() to accept it.
+- we use async await with try catch block inside every controller.
+- We will refactor it later.
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/67c2b402967eafbc544e33f4aaf9e4a506c8af0d)
+
+## Error handling 
+
+[Code reference] (https://github.com/harikrishkk/devcamper_api/commit/98a61148f269774e40f78f486bc942e7c8b2bee5)
+[Code](https://github.com/harikrishkk/devcamper_api/commit/968e06ce4ad6ab397f2d1f52c33cb67ee6419b3b)
+
+## Async await handler 
+
+- we use async await  & a handler to centralize the try catch everywhere. 
+- This helps error handling.
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/908de680836de4dff3b1eb39e30d82c7d99811a8)
+
+## Mongoose middleware
+
+[Site](https://mongoosejs.com/docs/middleware.html)
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/1e5f337dc6a4b51854e33d683fd9ba155c0e26cb)
+[Geocoder Mapquest API +  middleware](https://github.com/harikrishkk/devcamper_api/commit/484de544db0f64206557b5057e71f3918626f40a)
+- Mapquest - hari's login. 
+
+## Adding seeding to db 
+
+- this populates the data into the mongodb database. 
+[Seeding](https://github.com/harikrishkk/devcamper_api/commit/9b43b1d9fc0d008061becad7417f35d3b1916dcb)
+
+## Geospatial data + Get Bootcamp by distance / Filtering, Pagination, Sorting 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/dd545f8bf2e67e25ba958562a7c69fa051bb4954)
+
+## Add course Modal 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/1168ae79ee216a9465620fca201fe9970421ec26)
+- here we also see how to mount the route into something from another route. We need to merge the same with the parameter configuration too.
+
+## Populate & Virtuals 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/2ea50d4908c940324db5d48d42d2b78a5b44f5ed)
+
+## CRUD operations - course 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/c2eb3865ba566074e2469f809ef75f0435ab029a)
+
+## Course tuition cost 
+
+- statics is where we call it on the actual modal.
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/ffe34f7bd88eddc37d35e3696499a1d69449d242)
+
+## Photo upload 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/f2726d8697d9bf7778ed973043e198e168255f45)
+
+## Move advanced results into a middleware 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/cbb6d88edc82a487718d8c81e397addb17c454ee)
+
+## Authentication 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/854cac289947707b41a049d608c76e815e0b1b3a)
+[Sign in & get JWT](https://github.com/harikrishkk/devcamper_api/commit/e5922993a821b40fcd9ce8ec310f3728af19c361)
+[Send cookies](https://github.com/harikrishkk/devcamper_api/commit/a9ef899ec8624615fa20c00020b6663da31f4a43)
+
+
+## Auth protect middleware 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/a972d193cdab055ec50996b91ece802563181ad8)
+
+## Role authorization 
+
+- user & publisher. 
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/66ccbbfb2a2198d8af09ed8ca72616440ade8688)
+
+## Bootcamp ownership 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/867a8087c5f4431c00e8aedd056f2d83c9be1722)
+
+## Generate reset password token 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/0ba122f2b38971a468a37c4faa297be180fb6552)
+
+## Send email for forgot password 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/4dd6301e7f471a4aeed8806283bc1bc4a534658d)
+
+## Password reset 
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/e8ad5b781405af9698895b0d14282ba22ddde5d2)
+
+## Admin CRUD 
+
+- update user details, passwords etc by admin.
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/0fb20c1927d934cda44e83861eaa738f56aa2a66)
+
+## Review model 
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/58a61fb3c5b1b80f9c826ec316cf6cc160e2d072)
+
+## Add and get review 
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/a13a2f33169b30c0991d94c3bc23237b5a3a23d4)
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/c07fcf75677407d56d5b32bd161d8a66c82e32d4)
+
+## Aggregate review 
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/5b22fa08ba3a0250d546950a6248d3adf8c3647b)
+
+## Update/Delete review 
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/c2a2050054b167b320f6817b9ad56e208c755e1c)
+
+## Logout 
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/c2a2050054b167b320f6817b9ad56e208c755e1c)
+
+## Sanitization against SQL injection
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/c48e13bc1e11adb4fb389ab074c42052ebf406cb)
+
+## API security
+
+[Code reference](https://github.com/harikrishkk/devcamper_api/commit/efb7768fb023ae8fb0c4f7a06c71c9bafa73ebb5)
